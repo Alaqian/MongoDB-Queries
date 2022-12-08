@@ -1,0 +1,1 @@
+db.restaurants.find().limit(3).forEach(printjson);

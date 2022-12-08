@@ -1,0 +1,4 @@
+This file is meant to store backups of tested queries for backup
+
+mongoimport --db aaz7118_db --collection restaurants --file restaurants.json // import using cmd
+mongo aaz7118_db // running a query file
