@@ -26,8 +26,5 @@ print("Running in command prompt cuts off some of the output so the pdf contains
 
 // Switching to aaz7118_db
 use aaz7118_db
-
-db.meteorites.aggregate([
-    { $addFields: { date: { $toDate: "$year" } } },
-    { $group: { _id: { $year: "$date" }, count: { $sum: 1 } } }
-  ]).forEach(printjson)
+show dbs
+show collections
