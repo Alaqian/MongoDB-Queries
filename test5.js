@@ -16,13 +16,10 @@ print("mongoimport --db aaz7118_db --collection restaurants --file restaurants.j
 print("You can then run the script using this command:")
 print("mongo <q2.js\n")
 print("NOTE: I could only get `mongo <q2.js` to work on command prompt. It did not work on bash or PowerShell\n")
-print("Running in command prompt cuts off some of the output \n")
+print("Running in command prompt cuts off some of the output so the pdf contains full outputs\n")
 
 // Switching to aaz7118_db
 use aaz7118_db
-db.restaurants.drop()
-
-db.meteorites.drop()
 
 db.meteorites.aggregate([
     { $addFields: { date: { $toDate: "$year" } } },
