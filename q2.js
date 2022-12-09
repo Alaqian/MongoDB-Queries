@@ -59,7 +59,7 @@ print("\n5. Display: restaurant_id, name, borough and zip code, exclude the fiel
 print("> db.restaurants.find( { }, { _id: 0, restaurant_id: 1, name: 1, borough: 1, \"address.zipcode\": 1 } ).pretty()")
 db.restaurants.find( { }, { _id: 0, restaurant_id: 1, name: 1, borough: 1, "address.zipcode": 1 } ).pretty()
 
-// 6. Display all the restaurants in the Bronx
+    // 6. Display all the restaurants in the Bronx
 print("\n6. Display all the restaurants in the Bronx\n")
 print("> db.restaurants.find({ borough: \"Bronx\" }).pretty()")
 db.restaurants.find({ borough: "Bronx" }).pretty()
@@ -76,13 +76,13 @@ db.restaurants.find({ borough: "Bronx" }).skip(5).limit(5).pretty()
 
 // 9. Find the restaurants with a score more than 85. 
 print("\n9. Find the restaurants with a score more than 85\n")
-print("> db.restaurants.find({ grades: { $elemMatch: { score: { $gt: 85 } } } }).pretty()")
-db.restaurants.find({ grades: { $elemMatch: { score: { $gt: 85 } } } }).pretty()
+print("> db.restaurants.find({ \"grades.score\": { $gt: 85 } }).pretty()")
+db.restaurants.find({ "grades.score": { $gt: 85 } }).pretty()
 
 // 10. Find the restaurants that achieved a score, more than 80 but less than 100. 
 print("\n10. Find the restaurants that achieved a score, more than 80 but less than 100\n")
-print("> db.restaurants.find({ grades: { $elemMatch: { score: { $gt: 80, $lt: 100 } } } }).pretty()")
-db.restaurants.find({ grades: { $elemMatch: { score: { $gt: 80, $lt: 100 } } } }).pretty()
+print("> db.restaurants.find({ grades: { $elemMatch: { score: { $gt: 80, $lte: 100 } } } }).pretty()")
+db.restaurants.find({ "grades.score": { $gt: 80, $lt: 100 } }).pretty()
 
 // 11. Find the restaurants which locate in longitude value less than -95.754168
 print("\n11. Find the restaurants which locate in longitude value less than -95.754168\n")
@@ -91,10 +91,20 @@ db.restaurants.find({ "address.coord.0": { $lt: -95.754168 } }).pretty()
 
 // 12. Find the restaurants that do not prepare any cuisine of 'American' and their grade score more than 70 and longitude less than -65.754168
 print("\n12. Find the restaurants that do not prepare any cuisine of 'American' and their grade score more than 70 and longitude less than -65.754168\n")
-print("> db.restaurants.find({ cuisine: { $ne: \"American \" }, \"address.coord.0\": { $lt: -65.754168 }, grades: { $elemMatch: { score: { $gt: 85 } } } }).pretty()")
-db.restaurants.find({ cuisine: { $ne: "American " }, "address.coord.0": { $lt: -65.754168 }, grades: { $elemMatch: { score: { $gt: 85 } } } }).pretty()
+print("> db.restaurants.find({ cuisine: { $ne: \"American \" }, \"address.coord.0\": { $lt: -65.754168 }, \"grades.score\": { $gt: 70 } }).pretty()")
+db.restaurants.find({ 
+    $and: [
+        { cuisine: { $ne: "American " } }, 
+        { 'address.coord': { $lt: -65.754168 } }, 
+        { 'grades.score': { $gt: 70 } }
+    ] 
+}).pretty()
 
 // 13. Find the restaurants which do not prepare any cuisine of 'American' and achieved a score more than 70 and located in the longitude less than -65.754168. (without using $and operator)
 print("\n13. Find the restaurants which do not prepare any cuisine of 'American' and achieved a score more than 70 and located in the longitude less than -65.754168. (without using $and operator)\n")
-print("> db.restaurants.find({ cuisine: { $ne: \"American \" }, \"address.coord.0\": { $lt: -65.754168 }, grades: { $elemMatch: { score: { $gt: 85 } } } }).pretty()")
-db.restaurants.find({ cuisine: { $ne: "American " }, "address.coord.0": { $lt: -65.754168 }, grades: { $elemMatch: { score: { $gt: 70 } } } }).pretty()
+print("> db.restaurants.find({ cuisine: { $ne: \"American \" }, \"address.coord.0\": { $lt: -65.754168 }, \"grades.score\": { $gt: 70 } }).pretty()")
+db.restaurants.find({ 
+    cuisine: { $ne: "American " }, 
+    "address.coord.0": { $lt: -65.754168 }, 
+    "grades.score": { $gt: 70 }
+}).pretty()
