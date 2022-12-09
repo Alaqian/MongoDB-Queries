@@ -27,7 +27,7 @@ print("Running in command prompt cuts off some of the output so the pdf contains
 // Switching to aaz7118_db
 use aaz7118_db
 show collections
-db
+
 // 2. Write MongoDB queries for (4 points each): 100 points
 print("\n2. Write MongoDB queries for (4 points each): 100 points")
 print("\n1. Count the number of documents in the collection.")
