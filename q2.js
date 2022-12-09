@@ -37,8 +37,9 @@ print("\n> db.restaurants.count()")
 db.restaurants.count()
 
 // 2. Display all the documents in the collection.
-print("\n2. Display all the documents in the collection.")
+print("\n2. Display all the documents in the collection.\n")
 print("> db.restaurants.find()")
 db.restaurants.find()
 
-// 3.
+// 3. Display: restaurant_id, name, borough and cuisine for all the documents
+print("\n3. Display: restaurant_id, name, borough and cuisine for all the documents")
