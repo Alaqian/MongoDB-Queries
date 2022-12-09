@@ -1,3 +1,5 @@
+
+
 // Switching to aaz7118_db
 use aaz7118_db
 
@@ -120,3 +122,60 @@ db.restaurants.find({
 }).pretty()
 
 // 21. Find the restaurant Id, name, borough and cuisine for those restaurants which achieved a score below 10.
+db.restaurants.find({
+    "grades.score": {$lt: 10}
+}, {
+    restaurant_id: 1,
+    name: 1,
+    borough: 1,
+    cuisine: 1
+}).pretty() 
+
+// 22. Find the restaurant Id, name, borough and cuisine for those restaurants which prepared dish except 'American' and 'Chinese' or restaurant's name begins with letter 'Wil'.
+db.restaurants.find({
+    $and: [
+        {cuisine: {$ne: "American "}},
+        {cuisine: {$ne: "Chinese"}},
+        {name: {$regex: /^Wil/}}
+    ]
+}, {
+    restaurant_id: 1,
+    name: 1,
+    borough: 1,
+    cuisine: 1
+}).pretty()
+
+// 23. Find the restaurant Id, name, and grades for those restaurants which achieved a grade of "A" and scored 11 on an ISODate "2014-08-11T00:00:00Z" among many of survey dates.
+db.restaurants.find({
+    grades: {
+        $elemMatch: {
+            grade: "A",
+            score: 11,
+            date: ISODate("2014-08-11T00:00:00Z")
+        }
+    }
+}, {
+    restaurant_id: 1,
+    name: 1,
+    grades: 1
+}).pretty()
+
+// 24. Find the restaurant Id, name and grades for those restaurants where the 2nd element of grades array contains a grade of "A" and score 9 on an ISODate "2014-08-11T00:00:00Z"
+db.restaurants.find({
+    "grades.1.grade":"A", 
+    "grades.1.score" : 9,
+    "grades.1.date": ISODate("2014-08-11T00:00:00Z")
+}, {
+    restaurant_id: 1,
+    name: 1,
+    grades: 1
+}).pretty()
+
+// 25. xFind the restaurant Id, name, address and geographical location for those restaurants where 2nd element of coord array contains a value which is more than 42 and up to 52.
+db.restaurants.find({
+    "address.coord.1": {$gt: 42, $lte: 52}
+}, {
+    restaurant_id: 1,
+    name: 1,
+    address: 1
+}).pretty()
