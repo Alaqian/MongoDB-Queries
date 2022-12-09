@@ -23,16 +23,22 @@ print("You can then run the script using this command:")
 print("mongo <q2.js\n")
 print("NOTE: I could only get `mongo <q2.js` to work on command prompt. It did not work on bash or PowerShell\n")
 print("Running in command prompt cuts off some of the output so the pdf contains full outputs\n")
+print("--------------")
 
 // Switching to aaz7118_db
 use aaz7118_db
-show collections
 
-// 2. Write MongoDB queries for (4 points each): 100 points
-print("\n2. Write MongoDB queries for (4 points each): 100 points")
+// Question 2. Write MongoDB queries for (4 points each): 100 points
+print("\nQuestion 2. Write MongoDB queries for (4 points each): 100 points")
+
+// 1. Count the number of documents in the collection.
 print("\n1. Count the number of documents in the collection.")
-print("\nquery: \noutput:\n")
-db.meteorites.aggregate([
-  { $addFields: { date: { $toDate: "$year" } } },
-  { $group: { _id: { $year: "$date" }, count: { $sum: 1 } } }
-]).forEach(printjson)
+print("\n> db.restaurants.count()")
+db.restaurants.count()
+
+// 2. Display all the documents in the collection.
+print("\n2. Display all the documents in the collection.")
+print("> db.restaurants.find()")
+db.restaurants.find()
+
+// 3.
