@@ -2,7 +2,7 @@ INTSTRUCTIONS:
 --------------
 
 To run this script, make sure you run this on command prompt to import the data:
-mongoimport --db aaz7118_db --collection restaurants --file restaurants.json
+`mongoimport --db aaz7118_db --collection restaurants --file restaurants.json`
 
 edit the above command at `--file <file relative path> if the file is another directory or has another name.
 
