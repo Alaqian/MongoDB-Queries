@@ -22,7 +22,6 @@ The output of running this script has been copied into q2_pretty_verbose.pdf wit
 The output of running this script has been copied into q2_pretty_verbose.pdf with indexing for each query.
 
 NOTE: I could only get `mongo <q2_pretty.js` to work on command prompt. It did not work on bash or PowerShell.
-NOTE: I could only get `mongo <q2_pretty.js` to work on command prompt. It did not work on bash or PowerShell.
 
 This was completed using MongoDB shell version v4.2.23
 --------------
