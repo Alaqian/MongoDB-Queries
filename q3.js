@@ -34,29 +34,5 @@ print("--------------\n")
 use aaz7118_db
 print("3. Extra Credit: 50 points")
 print("\n1. 15 points: (events.json): Count the number of events per year.\n")
-db.events.aggregate([
-    // Check if the date is a full date or just a year
-    {
-        $addFields: {
-            year: {
-                $cond: [
-                { $gt: [{ $strLenBytes: "$date" }, 4] },
-                // If it's a full date, extract the year from the array
-                { $toInt: { $arrayElemAt: [{ $split: ["$date", "/"] }, 0] } },
-                // If it's just a year, convert the string to an integer
-                { $toInt: "$date" }
-                ]
-            }
-            }
-    },
-    // Group events by year and count them
-    {
-      $group: {
-        _id: "$year",
-        count: { $sum: 1 }
-      }
-    },
-    // Sort the result by year in ascending order
-    { $sort: { _id: 1 } }
-  ])
+
   
