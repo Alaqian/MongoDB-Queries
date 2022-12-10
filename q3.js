@@ -5,6 +5,8 @@ INTSTRUCTIONS:
 
 To run this script, make sure you run this on command prompt to import the data:
 1. `mongoimport --db aaz7118_db --collection events --file historical-events.json`
+2. `mongoimport --db aaz7118_db --collection meteorites --file meteorites.json`
+3. `mongoimport --db aaz7118_db --collection cities --type csv --headerline --file worldcities.csv`
 
 edit the above command at `--file <file relative path>` if the file is another directory or has another name.
 
@@ -22,6 +24,8 @@ print("\nINTSTRUCTIONS:")
 print("--------------")
 print("\nTo run this script, make sure you run this on command prompt to import the data:")
 print("1. `mongoimport --db aaz7118_db --collection events --file historical-events.json`")
+print("2. `mongoimport --db aaz7118_db --collection meteorites --file meteorites.json`")
+print("3. `mongoimport --db aaz7118_db --collection cities --type csv --headerline --file worldcities.csv`")
 print("\nedit the above command at `--file <file relative path>` if the file is another directory or has another name.\n")
 print("You can then run the script using this command:")
 print("`mongo <q3.js`\n")
@@ -60,3 +64,11 @@ db.events.aggregate([
     { $sort: { _id: 1 } }
   ])
   
+  db.cities.find({
+    $or: [
+        { city: { $regex: /"/ } },
+        { city_ascii: { $regex: /"/ } },
+        { admin_name: { $regex: /"/ } },
+        { capital: { $regex: /"/ } }
+    ]
+})

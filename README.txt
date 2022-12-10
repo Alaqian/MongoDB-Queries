@@ -25,6 +25,8 @@ This was completed using MongoDB shell version v4.2.23
 
 For question 3, you need to do use the following on command prompt:
 1. `mongoimport --db aaz7118_db --collection events --file historical-events.json`
+2. `mongoimport --db aaz7118_db --collection meteorites --file meteorites.json`
+3. `mongoimport --db aaz7118_db --collection cities --type csv --headerline --file worldcities.csv`
 
 You can then run the script using this command:
 `mongo <q3.js`
