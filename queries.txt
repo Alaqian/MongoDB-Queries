@@ -2,3 +2,88 @@ This file is meant to store backups of tested queries for backup
 
 mongoimport --db aaz7118_db --collection restaurants --file restaurants.json // import using cmd
 mongoimport --db aaz7118_db --collection meteorites --file meteorites.json
+
+1.
+
+db.events.aggregate([
+    // Check if the date is a full date or just a year
+    {
+      $addFields: {
+        year: {
+          $cond: [
+            { $ne: [{ $indexOfBytes: ["$date", "/"] }, -1] },
+            // If it's a full date, extract the year from the string
+            { $toInt: { $substr: ["$date", 0, { $indexOfBytes: ["$date", "/"] }] } },
+            // If it's just a year, convert the string to an integer
+            { $toInt: "$date" }
+          ]
+        }
+      }
+    },
+    // Group events by year and count them
+    {
+      $group: {
+        _id: "$year",
+        count: { $sum: 1 }
+      }
+    },
+    // Sort the result by year in ascending order
+    { $sort: { _id: 1 } }
+  ])
+
+2.
+  db.events.aggregate([
+    // Check if the date is a full date or just a year
+    {
+        $addFields: {
+            year: {
+                $cond: [
+                { $eq: [{ $size: { $split: ["$date", "/"] } }, 3] },
+                // If it's a full date, extract the year from the array
+                { $toInt: { $arrayElemAt: [{ $split: ["$date", "/"] }, 0] } },
+                // If it's just a year, convert the string to an integer
+                { $toInt: "$date" }
+                ]
+            }
+            }
+    },
+    // Group events by year and count them
+    {
+      $group: {
+        _id: "$year",
+        count: { $sum: 1 }
+      }
+    },
+    // Sort the result by year in ascending order
+    { $sort: { _id: 1 } }
+  ])
+
+  3.
+
+  db.events.aggregate([
+    // Check if the date is a full date or just a year
+    {
+        $addFields: {
+            year: {
+              $cond: [
+                { $gt: [{ $strLenBytes: "$date" }, 4] },
+                // If it's a full date, extract the year from the string
+                { $toInt: { $substr: ["$date", 0, { $indexOfBytes: ["$date", "/"] }] } },
+                // If it's just a year, convert the string to an integer
+                { $toInt: "$date" }
+              ]
+            }
+          }
+          
+          
+    },
+    // Group events by year and count them
+    {
+      $group: {
+        _id: "$year",
+        count: { $sum: 1 }
+      }
+    },
+    // Sort the result by year in ascending order
+    { $sort: { _id: 1 } }
+  ])

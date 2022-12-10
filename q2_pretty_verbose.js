@@ -16,9 +16,9 @@ There are other versions of this script:
 - q2_quiet.js: does not use .pretty() to reformat output - without printed comments,
 - q2_verbose.js: does not use .pretty() to reformat output - with printed comments
 
-The output of running this script has been copied into q2_pretty_verbose.pdf with indexing for each query.
+The output of running q2_pretty_verbose has been copied into q2.pdf with indexing for each query.
 
-NOTE: I could only get `mongo <q2_pretty.js` to work on command prompt. It did not work on bash or PowerShell.
+NOTE: I could only get `mongo <q2_pretty_verbose.js` to work on command prompt. It did not work on bash or PowerShell.
 
 This was completed using MongoDB shell version v4.2.23
 --------------
@@ -36,7 +36,7 @@ print("There are other versions of this script:")
 print("- q2_pretty_quiet.js: uses .pretty() to reformat output - without printed comments,")
 print("- q2_quiet.js: does not use .pretty() to reformat output - without printed comments,")
 print("- q2_verbose.js: does not use .pretty() to reformat output - with printed comments")
-print("\nThe output of running this script has been copied into q2_pretty_verbose.pdf with indexing for each query.\n")
+print("\nThe output of running q2_pretty_verbose.js has been copied into q2.pdf with indexing for each query.\n")
 print("NOTE: I could only get `mongo <q2_pretty.js` to work on command prompt. It did not work on bash or PowerShell.\n")
 print("This was completed using MongoDB shell version v4.2.23")
 print("--------------\n")
@@ -218,6 +218,7 @@ db.restaurants.find({
 
 // 22. Find the restaurant Id, name, borough and cuisine for those restaurants which prepared dish except 'American' and 'Chinese' or restaurant's name begins with letter 'Wil'.
 print("\n22. Find the restaurant Id, name, borough and cuisine for those restaurants which prepared dish except 'American' and 'Chinese' or restaurant's name begins with letter 'Wil'.\n")
+print("db.restaurants.find({ $and: [ {cuisine: {$ne: \"American \"}}, {cuisine: {$ne: \"Chinese\"}}, {name: {$regex: /^Wil/}} ] }, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1}).pretty()")
 db.restaurants.find({
     $and: [
         {cuisine: {$ne: "American "}},
