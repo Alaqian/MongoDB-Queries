@@ -32,7 +32,7 @@ For question 3, you need to do use the following on command prompt:
 ```
 mongoimport --db aaz7118_db --collection events --file historical-events.json
 mongoimport --db aaz7118_db --collection meteor --file meteorites.json
-mongoimport --db aaz7118_db --collection City --type csv --headerline --file worldcities.csv
+mongoimport --db aaz7118_db --collection city --type csv --headerline --file worldcities.csv
 ```
 edit the above commands at `--file <file relative path>` if the file is another directory or has another name.
 
