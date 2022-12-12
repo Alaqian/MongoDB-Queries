@@ -47,26 +47,20 @@ db.events.aggregate([
   {
     $addFields: {
       year: {
-        // Use $cond to check the format of the date
         $cond: [
-          // If $strLenBytes returns more than 4, it's a full date
           { $gt: [{ $strLenBytes: "$date" }, 4] },
-          // If it's a full date, extract the year from the array
           { $toInt: { $arrayElemAt: [{ $split: ["$date", "/"] }, 0] } },
-          // If it's just a year, convert the string to an integer
           { $toInt: "$date" }
         ]
       }
     }
   },
-  // Group events by year and count them
   {
     $group: {
       _id: "$year",
       count: { $sum: 1 }
     }
   },
-  // Sort the result by year in ascending order
   { $sort: { _id: 1 } }
 ])
 
