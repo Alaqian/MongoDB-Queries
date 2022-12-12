@@ -4,7 +4,7 @@ INTSTRUCTIONS:
 --------------
 
 To run this script, make sure you run this on command prompt to import the data:
-mongoimport --db aaz7118_db --collection restaurants --file restaurants.json
+`mongoimport --db aaz7118_db --collection restaurants --file restaurants.json`
 
 edit the above command at `--file <file relative path>` if the file is another directory or has another name.
 
@@ -16,7 +16,7 @@ There are other versions of this script:
 - q2_quiet.js: does not use .pretty() to reformat output - without printed comments,
 - q2_pretty_verbose.js: uses .pretty() to reformat output - with printed comments
 
-The output of running q2_pretty_verbose has been copied into q2.pdf with indexing for each query.
+The output of running q2_pretty_verbose.js has been copied into "aaz7118_Assignment_4.pdf" with indexing for each query.
 
 NOTE: I could only get `mongo <q2_verbose.js` to work on command prompt. It did not work on bash or PowerShell.
 
@@ -25,10 +25,12 @@ This was completed using MongoDB shell version v4.2.23
 
 } */
 
+// Question 2. Write MongoDB queries for (4 points each): 100 points
+print("\nQuestion 2. Write MongoDB queries for (4 points each): 100 points\n")
 print("\nINTSTRUCTIONS:")
 print("--------------")
 print("\nTo run this script, make sure you run this on command prompt to import the data:")
-print("`mongoimport --db aaz7118_db --collection restaurants --file restaurants.json\n`")
+print("`mongoimport --db aaz7118_db --collection restaurants --file restaurants.json`\n")
 print("edit the above command at `--file <file relative path>` if the file is another directory or has another name.\n")
 print("You can then run the script using this command:")
 print("`mongo <q2_verbose.js`\n")
@@ -36,16 +38,13 @@ print("There are other versions of this script:")
 print("- q2_pretty_quiet.js: uses .pretty() to reformat output - without printed comments,")
 print("- q2_quiet.js: does not use .pretty() to reformat output - without printed comments,")
 print("- q2_pretty_verbose.js: uses .pretty() to reformat output - with printed comments")
-print("\nThe output of running q2_pretty_verbose.js has been copied into q2.pdf with indexing for each query.\n")
+print("\nThe output of running q2_pretty_verbose.js has been copied into \"aaz7118_Assignment_4.pdf\" with indexing for each query.\n")
 print("NOTE: I could only get `mongo <q2_verbose.js` to work on command prompt. It did not work on bash or PowerShell.\n")
 print("This was completed using MongoDB shell version v4.2.23")
 print("--------------\n")
 
 // Switching to aaz7118_db
 use aaz7118_db
-
-// Question 2. Write MongoDB queries for (4 points each): 100 points
-print("\nQuestion 2. Write MongoDB queries for (4 points each): 100 points")
 
 // 1. Count the number of documents in the collection.
 print("\n1. Count the number of documents in the collection.")
@@ -259,8 +258,8 @@ db.restaurants.find({
     grades: 1
 })
 
-// 25. xFind the restaurant Id, name, address and geographical location for those restaurants where 2nd element of coord array contains a value which is more than 42 and up to 52.
-print("\n25. xFind the restaurant Id, name, address and geographical location for those restaurants where 2nd element of coord array contains a value which is more than 42 and up to 52.\n")
+// 25. Find the restaurant Id, name, address and geographical location for those restaurants where 2nd element of coord array contains a value which is more than 42 and up to 52.
+print("\n25. Find the restaurant Id, name, address and geographical location for those restaurants where 2nd element of coord array contains a value which is more than 42 and up to 52.\n")
 db.restaurants.find({
     "address.coord.1": {$gt: 42, $lte: 52}
 }, {

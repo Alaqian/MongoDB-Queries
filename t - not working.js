@@ -6,7 +6,7 @@ db.getCollection('').aggregate( [
  ])use aaz7118_db
 */}// 1. Add locations
 // 1. Add locations
-db.metcity.find().limit(5).skip(998)
+//db.metcity.find().limit(5).skip(998)
 // 1. Add locations
 // 1. Add locations
 // Define named function
@@ -16,10 +16,11 @@ function createUpdate(doc) {
         "filter": { "_id": doc._id },
         "update": {
           "$set": {
-            "location": {
+            "geolocation": {
               "type": "Point",
-              "coordinates": [doc.lng, doc.lat]
-            }
+              "coordinates": [doc.lng + 1 , doc.lat]
+            },
+            "type":"City"
           }
         }
       }
@@ -27,10 +28,8 @@ function createUpdate(doc) {
   }
   
   // 1. Add locations
-  var bulkOps = db.metcity.aggregate([
-    {
-      "$skip": 1000
-    },
+  var bulkOps = db.cities.aggregate([
+    
     {
       "$map": createUpdate
     }

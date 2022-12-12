@@ -16,7 +16,7 @@ There are other versions of this script:
 - q2_pretty_quiet.js: uses .pretty() to reformat output - without printed comments,
 - q2_verbose.js: does not use .pretty() to reformat output - with printed comments
 
-The output of running q2_pretty_verbose.js has been copied into q2.pdf with indexing for each query.
+The output of running q2_pretty_verbose.js has been copied into "aaz7118_Assignment_4.pdf" with indexing for each query.
 
 NOTE: I could only get `mongo <q2_pretty_quiet.js` to work on command prompt. It did not work on bash or PowerShell.
 
@@ -196,7 +196,7 @@ db.restaurants.find({
     grades: 1
 })
 
-// 25. xFind the restaurant Id, name, address and geographical location for those restaurants where 2nd element of coord array contains a value which is more than 42 and up to 52.
+// 25. Find the restaurant Id, name, address and geographical location for those restaurants where 2nd element of coord array contains a value which is more than 42 and up to 52.
 db.restaurants.find({
     "address.coord.1": {$gt: 42, $lte: 52}
 }, {

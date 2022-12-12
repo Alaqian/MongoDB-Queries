@@ -2,12 +2,12 @@
 INTSTRUCTIONS:
 --------------
 
-To run the question 2 script, make sure you run this on command prompt to import the data:
+To run the question 2 scripts, make sure you run this on command prompt to import the data:
 `mongoimport --db aaz7118_db --collection restaurants --file restaurants.json`
 
 edit the above command at `--file <file relative path>` if the file is another directory or has another name.
 
-You can then run the script using this command:
+You can then run any of the scripts using this command:
 `mongo < q2_verbose.js`
 
 There are four versions of the script, you can run any one you like:
@@ -16,7 +16,7 @@ There are four versions of the script, you can run any one you like:
 - q2_quiet.js: does not use .pretty() to reformat output - without printed comments,
 - q2_verbose.js: does not use .pretty() to reformat output - with printed comments
 
-The output of running q2_pretty_verbose.js has been copied into q2.pdf with indexing for each query.
+The output of running q2_pretty_verbose.js has been copied into "aaz7118_Assignment_4.pdf" with indexing for each query.
 
 NOTE: I could only get `mongo <q2_pretty.js` to work on command prompt. It did not work on bash or PowerShell. Same with other .js files.
 

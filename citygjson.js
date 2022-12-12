@@ -10,7 +10,7 @@ var bulkOps = db.cities.find().map(function(doc) {
                 "$set" : {
                     "location" : {
                         "type" : "Point",
-                        "coordinates" :  [doc.lng, doc.lat] 
+                        "geocoordinates" :  [doc.lng, doc.lat] 
                     }
                 }       
             }
