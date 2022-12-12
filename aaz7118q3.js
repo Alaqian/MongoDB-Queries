@@ -71,7 +71,7 @@ db.events.aggregate([
 ])
 
 // 2. 25 points: (meteorites.json, worldcities.csv): Use the MongoDB geospatial facilities to find the nearest city to each meteorite “fallen” (not found) since the year 1950, inclusive.
-print("\n25 points: (meteorites.json, worldcities.csv): Use the MongoDB geospatial facilities to find the nearest city to each meteorite “fallen” (not found) since the year 1950, inclusive.\n")
+print("\n2. 25 points: (meteorites.json, worldcities.csv): Use the MongoDB geospatial facilities to find the nearest city to each meteorite “fallen” (not found) since the year 1950, inclusive.\n")
 
 // Add GeoJSON field "geolocation" from lng and lat
 // Source: https://julien-bouffard.medium.com/convert-json-latitude-and-longitude-to-geojson-data-in-mongodb-4-x-415e6f1c4632
