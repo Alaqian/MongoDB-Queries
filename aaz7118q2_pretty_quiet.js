@@ -9,16 +9,16 @@ mongoimport --db aaz7118_db --collection restaurants --file restaurants.json
 edit the above command at `--file <file relative path>` if the file is another directory or has another name.
 
 You can then run the script using this command:
-`mongo <q2_pretty_quiet.js`
+`mongo <aaz7118q2_pretty_quiet.js`
 
 There are other versions of this script:
-- q2_pretty_verbose.js: uses .pretty() to reformat output - with printed comments,
-- q2_quiet.js: does not use .pretty() to reformat output - without printed comments,
-- q2_verbose.js: does not use .pretty() to reformat output - with printed comments
+- aaz7118q2_pretty_verbose.js: uses .pretty() to reformat output - with printed comments,
+- aaz7118q2_quiet.js: does not use .pretty() to reformat output - without printed comments,
+- aaz7118q2_verbose.js: does not use .pretty() to reformat output - with printed comments
 
-The output of running q2_verbose.js has been copied into "aaz7118_Assignment_4.pdf" with indexing for each query.
+The output of running aaz7118q2_verbose.js has been copied into "aaz7118_Assignment_4.pdf" with indexing for each query.
 
-NOTE: I could only get `mongo <q2_pretty.js` to work on command prompt. It did not work on bash or PowerShell.
+NOTE: I could only get `mongo <aaz7118q2_pretty.js` to work on command prompt. It did not work on bash or PowerShell.
 
 This was completed using MongoDB shell version v4.2.23
 --------------

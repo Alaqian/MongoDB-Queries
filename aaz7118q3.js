@@ -11,11 +11,11 @@ To run this script, make sure you run this on command prompt to import the data:
 edit the above command at `--file <file relative path>` if the file is another directory or has another name.
 
 You can then run the script using this command:
-`mongo <q3.js`
+`mongo <aaz7118q3.js`
 
 The output of running this script has been copied into "aaz7118_Assignment_4.pdf" with indexing for each query.
 
-NOTE: I could only get `mongo <q3.js` to work on command prompt. It did not work on bash or PowerShell.
+NOTE: I could only get `mongo <aaz7118q3.js` to work on command prompt. It did not work on bash or PowerShell.
 
 This was completed using MongoDB shell version v4.2.23
 --------------
@@ -32,9 +32,9 @@ print("2. `mongoimport --db aaz7118_db --collection meteor --file meteorites.jso
 print("3. `mongoimport --db aaz7118_db --collection city --type csv --headerline --file worldcities.csv`")
 print("\nedit the above command at `--file <file relative path>` if the file is another directory or has another name.\n")
 print("You can then run the script using this command:")
-print("`mongo <q3.js`\n")
+print("`mongo <aaz7118q3.js`\n")
 print("The output of running q2_verbose.js has been copied into \"aaz7118_Assignment_4.pdf\" with indexing for each query.\n")
-print("NOTE: I could only get `mongo <q3.js` to work on command prompt. It did not work on bash or PowerShell.\n")
+print("NOTE: I could only get `mongo <aaz7118q3.js` to work on command prompt. It did not work on bash or PowerShell.\n")
 print("This was completed using MongoDB shell version v4.2.23")
 print("--------------\n")
 
