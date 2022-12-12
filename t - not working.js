@@ -18,7 +18,7 @@ function createUpdate(doc) {
           "$set": {
             "geolocation": {
               "type": "Point",
-              "coordinates": [doc.lng + 1 , doc.lat]
+              "coordinates": [doc.lng, doc.lat]
             },
             "type":"City"
           }

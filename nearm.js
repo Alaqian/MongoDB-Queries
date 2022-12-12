@@ -3,7 +3,7 @@ use aaz7118_db
 // 1. Creat 2dsphere index
 db.m.createIndex( { geolocation : "2dsphere" } )
 //2. Find the distance to the nearest city
-db.m.aggregate([
+db.met.aggregate([
 {
    $geoNear: {
       near: { type: "Point", coordinates: [ -113,54.21667 ] },
@@ -16,7 +16,7 @@ db.m.aggregate([
 }
 ])
 
-db.m.find({
+db.met.find({
    geolocation: {
      $near: {
        $geometry: {

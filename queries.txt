@@ -24,11 +24,9 @@ db.events.aggregate([
     {
       $group: {
         _id: "$year",
-        count: { $sum: 1 }
+        totalEvents: { $sum: 1 }
       }
     },
-    // Sort the result by year in ascending order
-    { $sort: { _id: 1 } }
   ])
 
 2.
@@ -81,7 +79,7 @@ db.events.aggregate([
     {
       $group: {
         _id: "$year",
-        count: { $sum: 1 }
+        eventPerYear: { $sum: 1 }
       }
     },
     // Sort the result by year in ascending order

@@ -7,7 +7,7 @@ var bulkOps = db.cities.find().map(function(doc) {
         "updateOne" : {
             "filter" : { "_id" : doc._id },
             "update" : {
-                "$set" : {
+                "$set" : {  
                     "location" : {
                         "type" : "Point",
                         "geocoordinates" :  [doc.lng, doc.lat] 
@@ -25,14 +25,13 @@ db.cities.createIndex({ location: "2dsphere" })
 
 
 // find near this coordinate
-db.cities.find({
+db.cities.findOne({
     location: {
       $near: {
         $geometry: {
           type: "Point",
           coordinates: [48.2666, -13.4000]
         },
-        $maxDistance: 50000
       }
     }
   })  
