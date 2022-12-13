@@ -95,7 +95,13 @@ db.restaurants.find({ "grades.score": { $gt: 85 } }).pretty()
 // 10. Find the restaurants that achieved a score, more than 80 but less than 100. 
 print("\n10. Find the restaurants that achieved a score, more than 80 but less than 100\n")
 print("> db.restaurants.find({ grades: { $elemMatch: { score: { $gt: 80, $lte: 100 } } } }).pretty()")
-db.restaurants.find({ "grades.score": { $gt: 80, $lt: 100 } }).pretty()
+db.restaurants.find({
+    "grades": {
+        $elemMatch: {
+            "score": { $gt: 80, $lt: 100 }
+        }
+    }
+}).pretty()
 
 // 11. Find the restaurants which locate in longitude value less than -95.754168
 print("\n11. Find the restaurants which locate in longitude value less than -95.754168\n")

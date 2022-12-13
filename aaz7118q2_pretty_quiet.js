@@ -57,7 +57,13 @@ db.restaurants.find({ borough: "Bronx" }).skip(5).limit(5).pretty()
 db.restaurants.find({ "grades.score": { $gt: 85 } }).pretty()
 
 // 10. Find the restaurants that achieved a score, more than 80 but less than 100.
-db.restaurants.find({ "grades.score": { $gt: 80, $lt: 100 } }).pretty()
+db.restaurants.find({
+    "grades": {
+        $elemMatch: {
+            "score": { $gt: 80, $lt: 100 }
+        }
+    }
+}).pretty()
 
 // 11. Find the restaurants which locate in longitude value less than -95.754168
 db.restaurants.find({ "address.coord.0": { $lt: -95.754168 } }).pretty()
@@ -157,7 +163,7 @@ db.restaurants.find({
 }).pretty() 
 
 // 22. Find the restaurant Id, name, borough and cuisine for those restaurants which prepared dish except 'American' and 'Chinese' or restaurant's name begins with letter 'Wil'.
-db.restaurants.find({
+db.restaurants.fix  nd({
     $and: [
         {cuisine: {$ne: "American "}},
         {cuisine: {$ne: "Chinese"}},
